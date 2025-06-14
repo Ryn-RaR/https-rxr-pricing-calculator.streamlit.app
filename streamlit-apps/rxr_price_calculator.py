@@ -96,7 +96,7 @@ if "Bright & Bold Interior OR Exterior" in selected_services:
     - SUV & Truck: ~$230
     """)
 
-  if "Full Interior + Exterior" in selected_services:
+if "Full Interior + Exterior" in selected_services:
     st.markdown("---")
     st.subheader("What's Included in Full Interior + Exterior Detail:")
     st.markdown("""
@@ -163,7 +163,3 @@ if "Golden-Ink Signature" in selected_services:
     - Mid-size SUV: ~$550
     - SUV & Truck: ~$575
     """)
-
-st.markdown(f"### ~ ${subtotal:.2f}")
-
-st.caption("*All prices are approximate and vary by soot level, surface condition, and time investment.*")

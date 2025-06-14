@@ -12,9 +12,7 @@ vehicle_type = st.selectbox("Select your vehicle type:", [
 
 # Condensed service pricing structure
 service_matrix = {
-    "Basic Interior or Exterior": {
-        "Motorcycle": 200, "2-door Car": 215, "4-door Car": 220, "Mid-size SUV": 225, "SUV & Truck": 230
-    },
+    "Bright & Bold Interior OR Exterior": {"Motorcycle": 200, "2-door Car": 215, "4-door Car": 220, "Mid-size SUV": 225, "SUV & Truck": 230},
     "Full Interior + Exterior": {
         "Motorcycle": 350, "2-door Car": 370, "4-door Car": 380, "Mid-size SUV": 390, "SUV & Truck": 400
     },
@@ -31,7 +29,7 @@ subscription_tiers = ["Marbled Clay Buff/Polish/Sealed", "Golden-Ink Signature"]
 
 st.subheader("Select Services")
 filtered_services = [service for service in service_matrix.keys() if service not in ["Clay Bar & Iron Decon"]]
-selected_services = st.multiselect("Choose services to include in your estimate:", filtered_services)
+selected_services = st.multiselect("Choose services to include in your estimate:", filtered_services, default=[], key="service_selector")
 
 # Add-on pricing estimates
 add_ons = {
@@ -45,7 +43,7 @@ add_ons = {
 }
 
 st.subheader("Optional Add-ons")
-selected_addons = st.multiselect("Add optional extras:", list(add_ons.keys()))
+selected_addons = st.multiselect("Add optional extras:", list(add_ons.keys()), default=[], key="addon_selector")
 
 # Maintenance detail info
 st.markdown("---")
@@ -78,6 +76,94 @@ for addon in selected_addons:
 
 st.markdown("---")
 st.subheader("Estimated Total:")
+st.markdown(f"### ~ ${subtotal:.2f}")
+
+st.caption("*All prices are approximate and vary by soot level, surface condition, and time investment.*")
+
+if "Bright & Bold Interior OR Exterior" in selected_services:
+    st.markdown("---")
+    st.subheader("What's Included in Bright & Bold Interior OR Exterior:")
+    st.markdown("""
+    - Choose either Interior OR Exterior Focus
+    - Interior: dashboard, console, door panels deep-cleaned with microfiber and detailing brushes (Steamo-Vac: for deeper cleaning ~$15)+(Extracto-Vac: for best ~$30)
+    - Exterior: receives a powerwash multi-coat soak, foam drench soap, tires shined with wells cleaned, completed with a glossy wax wipedown
+
+    **Total Starting Price:**
+    - Motorcycle: ~$200
+    - 2-door Car: ~$215
+    - 4-door Car: ~$220
+    - Mid-size SUV: ~$225
+    - SUV & Truck: ~$230
+    """)
+
+  if "Full Interior + Exterior" in selected_services:
+    st.markdown("---")
+    st.subheader("What's Included in Full Interior + Exterior Detail:")
+    st.markdown("""
+    - Interior Wipe Down & Vacuum
+    - Steam Cleaning
+    - Exterior Foam Bath
+    - Towel Dry + Wheel & Rim Detail
+
+    **Total Starting Price:**
+    - Motorcycle: ~$350
+    - 2-door Car: ~$370
+    - 4-door Car: ~$380
+    - Mid-size SUV: ~$390
+    - SUV & Truck: ~$400
+    """)
+
+if "Golden-Ink Signature" in selected_services:
+    st.markdown("---")
+    st.subheader("What's Included in the Golden-Ink Signature:")
+    st.markdown("""
+    - Full Interior Shampoo + Extraction
+    - Leather & Plastic Conditioning
+    - Exterior Wash + Light Polish
+    - Glass & Mirror Detailing
+    
+    **Total Starting Price:**
+    - Motorcycle: ~$450
+    - 2-door & 4-door Cars: ~$500
+    - Mid-size SUV: ~$550
+    - SUV & Truck: ~$575
+    """)
+
+if "Marbled Clay Buff/Polish/Sealed" in selected_services:
+    st.markdown("---")
+    st.subheader("What's Included in Marbled Clay Buff/Polish/Sealed:")
+    st.markdown("""
+    - Hand Wash
+    - Iron Decontamination
+    - Clay Bar Treatment
+    - Buff & Polish
+    - Paint Sealant
+    - Tire & Trim Dressing
+    - Glass Finish
+
+    **Total Starting Price:**
+    - Motorcycle: ~$555
+    - 2-door & 4-door Cars: ~$777
+    - Mid-size SUV: ~$888
+    - SUV & Truck: ~$999
+    """)
+
+if "Golden-Ink Signature" in selected_services:
+    st.markdown("---")
+    st.subheader("What's Included in the Golden-Ink Signature:")
+    st.markdown("""
+    - Full Interior Shampoo + Extraction
+    - Leather & Plastic Conditioning
+    - Exterior Wash + Light Polish
+    - Glass & Mirror Detailing
+    
+    **Total Starting Price:**
+    - Motorcycle: ~$450
+    - 2-door & 4-door Cars: ~$500
+    - Mid-size SUV: ~$550
+    - SUV & Truck: ~$575
+    """)
+
 st.markdown(f"### ~ ${subtotal:.2f}")
 
 st.caption("*All prices are approximate and vary by soot level, surface condition, and time investment.*")

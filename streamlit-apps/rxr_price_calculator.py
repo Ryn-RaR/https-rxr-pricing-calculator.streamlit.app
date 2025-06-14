@@ -1,7 +1,28 @@
 import streamlit as st
 
 st.set_page_config(page_title="RxR Service Estimator")
-st.title("🧼 RxR Interactive Pricing Calculator")
+col1, col2 = st.columns([2, 1])
+with col1:
+    st.title("🧼 RxR Interactive Pricing Calculator")
+with col2:
+    st.markdown("""
+    ### 🛠️ Maintenance Detail
+    Before we can offer a subscription or advanced polishing estimate, your vehicle must receive a maintenance detail.
+
+    **Includes:**
+    - 2-Bucket Wash
+    - Buff/Polish
+    - Tire & Trim Dressing
+    - Carpet & Leather Extraction
+    - Dashboard Cleaning
+
+    **Prices (Starting at):**
+    - Car: ~$300
+    - Mid-size SUV: ~$350
+    - Truck/SUV: ~$400
+
+    After this service, custom packages and subscriptions may be unlocked.
+    """)
 
 st.markdown("---")
 
@@ -47,24 +68,7 @@ selected_addons = st.multiselect("Add optional extras:", list(add_ons.keys()), d
 
 # Maintenance detail info
 st.markdown("---")
-st.subheader("🛠️ Maintenance Detail")
-st.markdown("""
-Before we can offer a subscription or advanced polishing estimate, your vehicle must receive a maintenance detail.
 
-**Maintenance Includes:**
-- 2-Bucket Wash
-- Buff/Polish
-- Tire & Trim Dressing
-- Carpet & Leather Extraction
-- Dashboard Cleaning
-
-**Prices (Starting at):**
-- Car: ~$300
-- Mid-size SUV: ~$350
-- Truck/SUV: ~$400
-
-After this service, custom packages and subscriptions may be unlocked.
-""")
 
 # Estimate Calculation
 subtotal = 0
@@ -113,21 +117,7 @@ if "Full Interior + Exterior" in selected_services:
     - SUV & Truck: ~$400
     """)
 
-if "Golden-Ink Signature" in selected_services:
-    st.markdown("---")
-    st.subheader("What's Included in the Golden-Ink Signature:")
-    st.markdown("""
-    - Full Interior Shampoo + Extraction
-    - Leather & Plastic Conditioning
-    - Exterior Wash + Light Polish
-    - Glass & Mirror Detailing
-    
-    **Total Starting Price:**
-    - Motorcycle: ~$450
-    - 2-door & 4-door Cars: ~$500
-    - Mid-size SUV: ~$550
-    - SUV & Truck: ~$575
-    """)
+
 
 if "Marbled Clay Buff/Polish/Sealed" in selected_services:
     st.markdown("---")
@@ -146,20 +136,4 @@ if "Marbled Clay Buff/Polish/Sealed" in selected_services:
     - 2-door & 4-door Cars: ~$777
     - Mid-size SUV: ~$888
     - SUV & Truck: ~$999
-    """)
-
-if "Golden-Ink Signature" in selected_services:
-    st.markdown("---")
-    st.subheader("What's Included in the Golden-Ink Signature:")
-    st.markdown("""
-    - Full Interior Shampoo + Extraction
-    - Leather & Plastic Conditioning
-    - Exterior Wash + Light Polish
-    - Glass & Mirror Detailing
-    
-    **Total Starting Price:**
-    - Motorcycle: ~$450
-    - 2-door & 4-door Cars: ~$500
-    - Mid-size SUV: ~$550
-    - SUV & Truck: ~$575
     """)

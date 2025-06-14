@@ -18,7 +18,7 @@ service_matrix = {
     "Full Interior + Exterior": {
         "Motorcycle": 350, "2-door Car": 370, "4-door Car": 380, "Mid-size SUV": 390, "SUV & Truck": 400
     },
-    "$999 RxR Marble-Miracle": {
+    "Marbled Clay Buff/Polish/Sealed": {
         "Motorcycle": 555, "2-door Car": 777, "4-door Car": 777, "Mid-size SUV": 888, "SUV & Truck": 999
     },
     "Golden-Ink Signature": {
@@ -27,7 +27,7 @@ service_matrix = {
 }
 
 # Tier groupings for subscriptions
-subscription_tiers = ["$999 RxR Marble-Miracle", "Golden-Ink Signature"]
+subscription_tiers = ["Marbled Clay Buff/Polish/Sealed", "Golden-Ink Signature"]
 
 st.subheader("Select Services")
 filtered_services = [service for service in service_matrix.keys() if service not in ["Clay Bar & Iron Decon"]]

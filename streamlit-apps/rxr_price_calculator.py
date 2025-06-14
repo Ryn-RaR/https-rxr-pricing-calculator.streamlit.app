@@ -10,18 +10,15 @@ vehicle_type = st.selectbox("Select your vehicle type:", [
     "Motorcycle", "2-door Car", "4-door Car", "Mid-size SUV", "SUV & Truck"
 ])
 
-# Core Services Pricing
-core_prices = {
-    "Basic Detail": {
+# Condensed service pricing structure
+service_matrix = {
+    "Basic Interior or Exterior": {
         "Motorcycle": 200, "2-door Car": 215, "4-door Car": 220, "Mid-size SUV": 225, "SUV & Truck": 230
     },
-    "Full Detail": {
+    "Full Interior + Exterior": {
         "Motorcycle": 350, "2-door Car": 370, "4-door Car": 380, "Mid-size SUV": 390, "SUV & Truck": 400
     },
-    "Clay & Iron Decon": {
-        "Motorcycle": 130, "2-door Car": 135, "4-door Car": 140, "Mid-size SUV": 145, "SUV & Truck": 150
-    },
-    "Marble-Miracle": {
+    "$999 RxR Marble-Miracle": {
         "Motorcycle": 555, "2-door Car": 777, "4-door Car": 777, "Mid-size SUV": 888, "SUV & Truck": 999
     },
     "Golden-Ink Signature": {
@@ -29,8 +26,12 @@ core_prices = {
     }
 }
 
+# Tier groupings for subscriptions
+subscription_tiers = ["$999 RxR Marble-Miracle", "Golden-Ink Signature"]
+
 st.subheader("Select Services")
-selected_services = st.multiselect("Choose services to include in your estimate:", list(core_prices.keys()))
+filtered_services = [service for service in service_matrix.keys() if service not in ["Clay Bar & Iron Decon"]]
+selected_services = st.multiselect("Choose services to include in your estimate:", filtered_services)
 
 # Add-on pricing estimates
 add_ons = {
@@ -46,10 +47,31 @@ add_ons = {
 st.subheader("Optional Add-ons")
 selected_addons = st.multiselect("Add optional extras:", list(add_ons.keys()))
 
+# Maintenance detail info
+st.markdown("---")
+st.subheader("🛠️ Maintenance Detail")
+st.markdown("""
+Before we can offer a subscription or advanced polishing estimate, your vehicle must receive a maintenance detail.
+
+**Maintenance Includes:**
+- 2-Bucket Wash
+- Buff/Polish
+- Tire & Trim Dressing
+- Carpet & Leather Extraction
+- Dashboard Cleaning
+
+**Prices (Starting at):**
+- Car: ~$300
+- Mid-size SUV: ~$350
+- Truck/SUV: ~$400
+
+After this service, custom packages and subscriptions may be unlocked.
+""")
+
 # Estimate Calculation
 subtotal = 0
 for service in selected_services:
-    subtotal += core_prices[service][vehicle_type]
+    subtotal += service_matrix[service][vehicle_type]
 
 for addon in selected_addons:
     subtotal += add_ons[addon]

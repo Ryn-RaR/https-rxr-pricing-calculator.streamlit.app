@@ -1,28 +1,35 @@
 import streamlit as st
 
 st.set_page_config(page_title="RxR Service Estimator")
-col1, col2 = st.columns([2, 1])
-with col1:
-    st.title("🧼 RxR Interactive Pricing Calculator")
-with col2:
-    st.markdown("""
-    ### 🛠️ Maintenance Detail
-    Before we can offer a subscription or advanced polishing estimate, your vehicle must receive a maintenance detail.
+st.title("🧼 RxR Service Estimator")
 
-    **Includes:**
-    - 2-Bucket Wash
-    - Buff/Polish
-    - Tire & Trim Dressing
-    - Carpet & Leather Extraction
-    - Dashboard Cleaning
+st.markdown("""
+## Why RxR?
+Experience high-tier detailing that goes beyond surface-level. RxR delivers:
+- Professional-grade hand washes and multi-layer protection
+- Paint-safe polishing and restorative treatments
+- Deep-cleaned interiors using extraction and steam
+- Premium add-ons for those who demand excellence
 
-    **Prices (Starting at):**
-    - Car: ~$300
-    - Mid-size SUV: ~$350
-    - Truck/SUV: ~$400
+Before accessing our pricing options, know that every journey starts with:
 
-    After this service, custom packages and subscriptions may be unlocked.
-    """)
+### 🛠️ Maintenance Detail
+An initial deep clean and inspection to restore your vehicle and assess the best plan moving forward.
+
+**Includes:**
+- 2-Bucket Wash
+- Buff/Polish
+- Tire & Trim Dressing
+- Carpet & Leather Extraction
+- Dashboard Cleaning
+
+**Prices (Starting at):**
+- Car: ~$300
+- Mid-size SUV: ~$350
+- Truck/SUV: ~$400
+
+After this, custom packages and subscriptions may be unlocked.
+""")
 
 st.markdown("---")
 
@@ -137,3 +144,4 @@ if "Marbled Clay Buff/Polish/Sealed" in selected_services:
     - Mid-size SUV: ~$888
     - SUV & Truck: ~$999
     """)
+

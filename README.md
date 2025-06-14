@@ -1,1 +1,1 @@
-# https-rxr-pricing-calculator.streamlit.app
+# rxr-price-calculator.streamlit.app
